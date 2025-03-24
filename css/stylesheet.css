@@ -247,6 +247,10 @@ a {
     border: none;
   }
 
+.portfolio_hero {
+    padding-right: 20%;
+}
+
 /* Update your media query */
 @media screen and (max-width: 1100px) {
     .hamburger-menu {
@@ -298,5 +302,11 @@ a {
     }
     .portfolio-container > div {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .portfolio_hero {
+        padding-right: 0%;
     }
 }
