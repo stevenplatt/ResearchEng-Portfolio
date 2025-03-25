@@ -1,6 +1,9 @@
 {
     "name": "ResearchEng Portfolio Dev Environment",
     "image": "mcr.microsoft.com/devcontainers/base:debian-12",
+    "mounts": [
+        "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
+    ],
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
             "version": "18"
