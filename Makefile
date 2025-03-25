@@ -1,6 +1,6 @@
 # Makefile for ResearchEng-Portfolio
 
-.PHONY: help install demo telecomsteve clean validate deploy-demo deploy-prod
+.PHONY: help install demo telecomsteve clean validate deploy-demo deploy-telecomsteve
 
 # Default target
 help:
@@ -54,7 +54,7 @@ deploy-demo:
 	@echo "Demo deployment complete: https://demo.telecomsteve.com"
 
 # Deploy to production environment (Google Cloud Storage)
-deploy-prod:
+deploy-telecomsteve:
 	@echo "Deploying to production environment..."
 	gsutil -m cp -r examples/telecomsteve/* gs://telecomsteve.com/
 	gsutil web set -m index.html -e 404.html gs://telecomsteve.com/

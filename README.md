@@ -9,9 +9,13 @@ An html portfolio website template for Research Engineers.
 ResearchEng Portfolio is a portfolio template designed to be fast and easy to maintain. It includes a section for research, which is often not included in standard developer portfolio templates.
 
 ## Table of Contents
+
 - [Features](#features)
 - [Demo](#demo)
-- [Quick Start](#quick-start)
+- [Development Environment](#development-environment)
+  - [Using Dev Container](#using-dev-container)
+  - [Manual Setup](#manual-setup)
+- [Using the Makefile](#using-the-makefile)
 - [Page Layouts](#page-layouts)
   - [Desktop Pages](#desktop-page-layouts)
   - [Mobile Pages](#mobile-page-layouts)
@@ -21,6 +25,7 @@ ResearchEng Portfolio is a portfolio template designed to be fast and easy to ma
 - [License](#license)
 
 ## Features
+
 - Lightweight, responsive design
 - Research section for publications and academic work
 - Portfolio section for showcasing projects
@@ -29,11 +34,32 @@ ResearchEng Portfolio is a portfolio template designed to be fast and easy to ma
 - Easy to deploy on cloud storage
 
 ## Demo
+
 Check out the live demo at <https://demo.telecomsteve.com>
 
-## Quick Start
+## Development Environment
 
-### Run this site locally using Nodejs
+### Using Dev Container
+
+This project includes a dev container configuration that provides a consistent development environment with all necessary dependencies pre-installed.
+
+To use the dev container:
+
+1. Ensure you have Docker and VS Code with the Remote - Containers extension installed
+2. Open the project in VS Code
+3. When prompted, click "Reopen in Container" or use the command palette (F1) and select "Remote-Containers: Reopen in Container"
+4. The container will build and install all dependencies automatically
+
+The dev container includes:
+
+- Node.js 18
+- Python 3.11
+- http-server for local development
+- Useful VS Code extensions for web development
+
+### Manual Setup
+
+If you prefer not to use the dev container, you can set up manually:
 
 ```bash
 # Install http-server globally
@@ -44,9 +70,33 @@ git clone https://github.com/stevenplatt/ResearchEng-portfolio.git
 
 # Navigate to project directory
 cd ResearchEng-portfolio/
+```
 
-# Start the server
-npx http-server
+## Using the Makefile
+
+The project includes a Makefile to simplify common development tasks:
+
+```bash
+# View all available commands
+make help
+
+# Install dependencies
+make install
+
+# Start local development server for the main template
+make demo
+
+# Start local development server for the telecomsteve example
+make telecomsteve
+
+# Clean temporary files
+make clean
+
+# Deploy to demo environment (requires GCP credentials)
+make deploy-demo
+
+# Deploy to production environment (requires GCP credentials)
+make deploy-telecomsteve
 ```
 
 ## Page Layouts
