@@ -1,13 +1,15 @@
 # Makefile for ResearchEng-Portfolio
 
-.PHONY: help install telecomsteve clean deploy-demo deploy-prod
+.PHONY: help install demo telecomsteve clean validate deploy-demo deploy-prod
 
 # Default target
 help:
 	@echo "Available commands:"
 	@echo "  make install         - Install dependencies (http-server)"
+	@echo "  make demo            - Run local development server"
 	@echo "  make telecomsteve    - Run local development server"
 	@echo "  make clean           - Clean any temporary files"
+	@echo "  make validate        - Validate HTML files"
 	@echo "  make deploy-demo     - Deploy to demo environment (requires GCP credentials)"
 	@echo "  make deploy-prod     - Deploy to production environment (requires GCP credentials)"
 
@@ -15,6 +17,11 @@ help:
 install:
 	@echo "Installing dependencies..."
 	sudo npm install http-server -g
+
+# Run local development server
+demo:
+	@echo "Starting local server on http://localhost:8080"
+	npx http-server -p 8080 -o
 
 # Run local development server using telecomsteve example code
 telecomsteve:

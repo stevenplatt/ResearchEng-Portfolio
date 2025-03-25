@@ -1,0 +1,29 @@
+{
+    "name": "ResearchEng Portfolio Dev Environment",
+    "image": "mcr.microsoft.com/devcontainers/base:debian-12",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "18"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.11"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ritwickdey.LiveServer",
+                "esbenp.prettier-vscode",
+                "vscode-icons-team.vscode-icons",
+                "formulahendry.auto-close-tag",
+                "formulahendry.auto-rename-tag"
+            ],
+            "settings": {
+                "editor.formatOnSave": true
+            }
+        }
+    },
+    "postCreateCommand": "npm install -g http-server",
+    "forwardPorts": [8080, 8081],
+    "remoteUser": "vscode"
+}
