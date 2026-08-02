@@ -4,6 +4,9 @@ on:
  push:
    branches:
      - main
+ pull_request:
+   branches:
+     - main
  workflow_dispatch:
 
 # Ensure only one workflow runs at a time
@@ -12,8 +15,30 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
+ test:
+   runs-on: ubuntu-24.04
+   steps:
+     - name: Checkout code
+       uses: actions/checkout@v4
+
+     - name: Setup Node.js
+       uses: actions/setup-node@v4
+       with:
+         node-version: 20
+         cache: npm
+
+     - name: Install dependencies
+       run: npm ci
+
+     # jest enforces 100% coverage via coverageThreshold in package.json;
+     # this step fails (and blocks deploy) if coverage drops below 100%.
+     - name: Run tests with coverage
+       run: npm test
+
  deploy:
    runs-on: ubuntu-24.04
+   needs: test
+   if: github.event_name != 'pull_request'
    steps:
      - name: Checkout code
        uses: actions/checkout@v4

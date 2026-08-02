@@ -3,6 +3,7 @@
 An html portfolio website template for Research Engineers.
 
 [![CI/CD Suite](https://github.com/stevenplatt/ResearchEng-Portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/stevenplatt/ResearchEng-Portfolio/actions/workflows/ci.yml)
+[![Code Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/stevenplatt/ResearchEng-Portfolio/actions/workflows/ci.yml)
 
 **Demo Link**: <https://demo.telecomsteve.com>
 
@@ -16,6 +17,7 @@ ResearchEng Portfolio is a portfolio template designed to be fast and easy to ma
   - [Using Dev Container](#using-dev-container)
   - [Manual Setup](#manual-setup)
 - [Using the Makefile](#using-the-makefile)
+- [Testing](#testing)
 - [Page Layouts](#page-layouts)
   - [Desktop Pages](#desktop-page-layouts)
   - [Mobile Pages](#mobile-page-layouts)
@@ -89,6 +91,9 @@ make demo
 # Start local development server for the telecomsteve example
 make telecomsteve
 
+# Run the test suite with coverage
+make test
+
 # Clean temporary files
 make clean
 
@@ -98,6 +103,20 @@ make deploy-demo
 # Deploy to production environment (requires GCP credentials)
 make deploy-telecomsteve
 ```
+
+## Testing
+
+The site's JavaScript is covered by a [Jest](https://jestjs.io/) test suite running in a jsdom environment:
+
+```bash
+# Install test dependencies
+npm install
+
+# Run the tests with coverage reporting
+npm test
+```
+
+Jest enforces a **100% coverage threshold** (statements, branches, functions, and lines). The CI workflow runs the test suite on every push and pull request, and the deploy job only runs after the tests pass — a coverage drop below 100% fails the build and blocks deployment.
 
 ## Page Layouts
 

@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 *DS_store*
+# Node / test tooling
+node_modules/
+coverage/
