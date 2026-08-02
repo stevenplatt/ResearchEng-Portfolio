@@ -44,7 +44,6 @@ jobs:
          gcloud storage cp README.md gs://demo.telecomsteve.com/
          gcloud storage buckets update gs://demo.telecomsteve.com --web-main-page-suffix=index.html --web-error-page=404.html
 
-     - name: Upload Production Website  
-       run: |
-         gcloud storage cp -r examples/telecomsteve/* gs://telecomsteve.com/
-         gcloud storage buckets update gs://telecomsteve.com --web-main-page-suffix=index.html --web-error-page=404.html
+     # The production site (telecomsteve.com) is now built and deployed from
+     # https://github.com/stevenplatt/telecomsteve — this repo only serves
+     # demo.telecomsteve.com.
