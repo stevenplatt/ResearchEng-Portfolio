@@ -1,17 +1,16 @@
 # Makefile for ResearchEng-Portfolio
 
-.PHONY: help install demo telecomsteve clean test deploy-demo deploy-telecomsteve
+.PHONY: help install demo telecomsteve clean test deploy-demo
 
 # Default target
 help:
 	@echo "Available commands:"
-	@echo "  make install              - Install dependencies (http-server, test tooling)"
-	@echo "  make demo                 - Run local development server"
-	@echo "  make telecomsteve         - Run local development server"
-	@echo "  make clean                - Clean any temporary files"
-	@echo "  make test                 - Run the test suite with coverage"
-	@echo "  make deploy-demo          - Deploy to demo environment (requires GCP credentials)"
-	@echo "  make deploy-telecomsteve  - Deploy to production environment (requires GCP credentials)"
+	@echo "  make install       - Install dependencies (http-server, test tooling)"
+	@echo "  make demo          - Run local development server"
+	@echo "  make telecomsteve  - Run local development server"
+	@echo "  make clean         - Clean any temporary files"
+	@echo "  make test          - Run the test suite with coverage"
+	@echo "  make deploy-demo   - Deploy to demo environment (requires GCP credentials)"
 
 # Install dependencies
 install:
@@ -58,9 +57,6 @@ deploy-demo:
 	gcloud storage buckets update gs://demo.telecomsteve.com --web-main-page-suffix=index.html --web-error-page=404.html
 	@echo "Demo deployment complete: https://demo.telecomsteve.com"
 
-# Deploy to production environment (Google Cloud Storage)
-deploy-telecomsteve:
-	@echo "Deploying to production environment..."
-	gcloud storage cp -r examples/telecomsteve/* gs://telecomsteve.com/
-	gcloud storage buckets update gs://telecomsteve.com --web-main-page-suffix=index.html --web-error-page=404.html
-	@echo "Production deployment complete: https://telecomsteve.com"
+# The production site (telecomsteve.com) is built and deployed from
+# https://github.com/stevenplatt/telecomsteve — this repo only feeds
+# demo.telecomsteve.com.

@@ -99,9 +99,6 @@ make clean
 
 # Deploy to demo environment (requires GCP credentials)
 make deploy-demo
-
-# Deploy to production environment (requires GCP credentials)
-make deploy-telecomsteve
 ```
 
 ## Testing
@@ -164,7 +161,7 @@ For both desktop and mobile.
 
 The site is designed to be served directly from object storage such as Amazon S3 but can also be deployed using Apache, Nginx, or other web servers. Example instructions for serving a website from Amazon S3 can be found [here](https://medium.com/@kyle.galbraith/how-to-host-a-website-on-s3-without-getting-lost-in-the-sea-e2b82aa6cd38).
 
-The project includes a GitHub Actions workflow for automated deployment to Google Cloud Storage.
+The project includes a GitHub Actions workflow for automated deployment to Google Cloud Storage. This repository only deploys to <https://demo.telecomsteve.com> — the production site (telecomsteve.com) is built and deployed from a separate repository.
 
 ## Contributing
 
